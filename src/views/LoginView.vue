@@ -1,0 +1,5 @@
+<template>
+  <main>
+    <h1>Página de Login</h1>
+  </main>
+</template>
