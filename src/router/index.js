@@ -5,6 +5,8 @@ const ProductsView = () => import("@/views/ProductsView.vue");
 const TransactionsView = () => import("@/views/TransactionsView.vue");
 const DashboardView = () => import("@/views/DashboardView.vue");
 
+import { useMainStore } from "../stores/mainStore";
+
 const router = createRouter({
   history: createWebHistory(),
   routes: [
@@ -34,6 +36,14 @@ const router = createRouter({
       component: DashboardView,
     },
   ],
+});
+
+router.beforeEach(async (to, from, next) => {
+  if (!useMainStore().authenticated && to.name !== "login") {
+    next({ name: "login" });
+  } else {
+    next();
+  }
 });
 
 export default router;

@@ -12,17 +12,31 @@
       <router-link :to="{ name: 'dashboard' }">Dashboard</router-link>
     </nav>
     <ul class="flex items-center space-x-2">
-      <li class="hidden">Login</li>
+      <div @click="logout" class="cursor-pointer">
+        <li v-if="isLogged">Logout</li>
+      </div>
     </ul>
   </header>
 </template>
 
 <script>
+import { mapActions, mapState } from "pinia";
 import { RouterLink } from "vue-router";
+import { useMainStore } from "../stores/mainStore";
 
 export default {
   components: {
     RouterLink,
+  },
+  methods: {
+    ...mapActions(useMainStore, ["unregister"]),
+    logout() {
+      this.unregister();
+      this.$router.push("/");
+    }
+  },
+  computed: {
+    ...mapState(useMainStore, ["isLogged"]),
   },
 };
 </script>
