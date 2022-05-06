@@ -14,26 +14,31 @@ const router = createRouter({
       path: "/",
       name: "login",
       component: LoginView,
+      meta: { menu: "Login" },
     },
     {
       path: "/providers",
       name: "providers",
       component: ProvidersView,
+      meta: { menu: "Fornecedores" },
     },
     {
       path: "/products",
       name: "products",
       component: ProductsView,
+      meta: { menu: "Produtos" },
     },
     {
       path: "/transactions",
       name: "transactions",
       component: TransactionsView,
+      meta: { menu: "Transações" },
     },
     {
       path: "/dashboard",
       name: "dashboard",
       component: DashboardView,
+      meta: { menu: "Dashboard" },
     },
   ],
 });

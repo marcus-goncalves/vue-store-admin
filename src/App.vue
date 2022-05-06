@@ -1,6 +1,9 @@
 <template>
   <section class="sticky top-0">
     <TheNavbar />
+    <div class="border-solid border-b-2 border-gray-500">
+      <h1 class="ml-2 p-1 text-lg font-semibold">{{ routeName }}</h1>
+    </div>
   </section>
 
   <main>
@@ -15,6 +18,11 @@ export default {
     TheNavbar,
     RouterView,
   },
+  computed: {
+    routeName() {
+      return this.$route.meta.menu;
+    },
+  },
 };
 </script>
 
@@ -23,6 +31,6 @@ export default {
 
 body {
   font-family: "Poppins", sans-serif;
-  @apply bg-gray-50;
+  @apply bg-gray-200;
 }
 </style>
