@@ -1,6 +1,6 @@
 <template>
-  <section class="flex justify-between">
-    <div>
+  <section class="flex justify-between border-b-2 border-dashed">
+    <div class="p-2">
       <div class="flex items-center align-baseline">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -22,6 +22,7 @@
           id="provider"
           placeholder="Digite aqui..."
           class="w-50 text-sm py-2 border-b-2 border-gray-400 outline-none focus:border-purple-500"
+          @keyup="this.$emit('update:searchTerm', $event.target.value)"
         />
       </div>
     </div>
@@ -37,6 +38,7 @@
 </template>
 <script>
 export default {
+  emits: ["update:searchTerm"],
   methods: {
     createProvider() {
       console.log("Provider create");
